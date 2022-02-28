@@ -9,13 +9,9 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* BrowserRouter is a Router that uses HTML5 history API (pushState, replaceState, and popstate event) to keep UI in sync with the URL. */}
-    {/* It's used for doing client-side routing with URL segments. */}
-    {/* It allows single-page app to feel more like a traditional app. */}
-    {/* It also makes it easier to share links to a specific page in the app. */}
-    {/* <BrowserRouter> */}
+    <BrowserRouter>
       <App />
-    {/* </BrowserRouter> */}
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

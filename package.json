@@ -18,11 +18,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "serverStart": "node server.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:3000",
   "eslintConfig": {
     "extends": [
       "react-app",
