@@ -1,6 +1,6 @@
 import React from 'react';
 import { 
-  BrowserRouter as Router,
+  BrowserRouter,
   Routes, 
   Route,
   Link
@@ -13,6 +13,7 @@ import { CreateTweet } from './CreateTweet';
 
 function App() {
   return (
+    <BrowserRouter>
       <div>
         <nav className="navbar bg-light navbar-expand-lg navbar-light">
           <ul className="navbar-nav mr-auto">
@@ -25,12 +26,13 @@ function App() {
           </ul>
         </nav>
         <Routes>
-          <Route exact path="/" element={TweetList} />
+          <Route path="/" element={<TweetList />} />
           {/* <Route path="/edit/:id" element={EditTodo} /> */}
-          <Route path="/create" element={CreateTweet} />
+          <Route path="/create" element={<CreateTweet />} />
         </Routes>
 
       </div>
+    </BrowserRouter>
   );
 }
 

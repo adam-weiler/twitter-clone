@@ -12,12 +12,14 @@ export const TweetForm = ({ tweet, onSubmit }) => {
     });
 
     return(
+        // <form>
         <form onSubmit={submitHandler}>
             <div className="form-group">
                 <label htmlFor="text">
                     Text:
                 </label>
-                <input className="form-control" ref={register} type="text" name="text" id="text" />
+                {/* <input className="form-control" ref={register} type="text" name="text" id="text" /> */}
+                {/* <input className="form-control" ref={register} type="number" name="user" id="user" /> */}
             </div>
             <div className="form-group">
                 <button className="btn btn-primary">

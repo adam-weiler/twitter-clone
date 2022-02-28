@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-// import { Link } from 'react-router-dom'
-// import { getTweets } from "./api"
+import { Link } from 'react-router-dom'
+import { getTweets } from "./api"
 
 export const TweetList = () => {
   // const [items, setItems] = useState([])
@@ -13,6 +13,8 @@ export const TweetList = () => {
   //   fetchItems()
   // }, [])
 
+  const items = [{"_id": 1, "text": "Hellow orld!"}, {"_id": 2, "text": "Hello World!"}];
+
   return (
     <div className="container">
       <div className="mt-3">
@@ -24,7 +26,7 @@ export const TweetList = () => {
               <th>Action</th>
             </tr>
           </thead>
-          {/* <tbody>
+          <tbody>
             {
               items.map(tweet => (
                 <tr key={tweet._id}>
@@ -37,7 +39,7 @@ export const TweetList = () => {
                 </tr>
               ))
             }
-          </tbody> */}
+          </tbody>
         </table>
       </div>
     </div>
