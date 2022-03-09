@@ -53,74 +53,74 @@
 
 
 
-const express = require("express");
-const cors = require("cors");
-const mongoose = require("mongoose");
-const Tweet = require("./models/Tweet");
+// const express = require("express");
+// const cors = require("cors");
+// const mongoose = require("mongoose");
+// const Tweet = require("./models/Tweet");
 
-mongoose.connect("mongodb://127.0.0.1:27017/tweets", { useNewUrlParser: true });
+// mongoose.connect("mongodb://127.0.0.1:27017/tweets", { useNewUrlParser: true });
 
-mongoose.connection.once("open", () => {
-  console.log("Mongodb connection established successfully");
-});
+// mongoose.connection.once("open", () => {
+//   console.log("Mongodb connection established successfully");
+// });
 
-const PORT = 4000;
+// const PORT = 4000;
 
-const app = express();
+// const app = express();
 
-app.use(cors());
-app.use(express.json());
+// app.use(cors());
+// app.use(express.json());
 
-app.get("/", (req, res) => {
-  Tweet.find((err, tweets) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.json(tweets);
-    }
-  });
-});
+// app.get("/", (req, res) => {
+//   Tweet.find((err, tweets) => {
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       res.json(tweets);
+//     }
+//   });
+// });
 
-app.post("/create", (req, res) => {
-  const tweet = new Tweet(req.body);
-  tweet
-    .save()
-    .then((tweet) => {
-      res.json(tweet);
-    })
-    .catch((err) => {
-      res.status(500).send(err.message);
-    });
-});
+// app.post("/create", (req, res) => {
+//   const tweet = new Tweet(req.body);
+//   tweet
+//     .save()
+//     .then((tweet) => {
+//       res.json(tweet);
+//     })
+//     .catch((err) => {
+//       res.status(500).send(err.message);
+//     });
+// });
 
-app.get("/:id", (req, res) => {
-  const id = req.params.id;
-  Tweet.findById(id, (err, tweet) => {
-    res.json(tweet);
-  });
-});
+// app.get("/:id", (req, res) => {
+//   const id = req.params.id;
+//   Tweet.findById(id, (err, tweet) => {
+//     res.json(tweet);
+//   });
+// });
 
-app.post("/:id", (req, res) => {
-  const id = req.params.id;
-  Tweet.findById(id, (err, tweet) => {
-    if (!tweet) {
-      res.status(404).send("Tweet not found");
-    } else {
-      tweet.text = req.body.text;
+// app.post("/:id", (req, res) => {
+//   const id = req.params.id;
+//   Tweet.findById(id, (err, tweet) => {
+//     if (!tweet) {
+//       res.status(404).send("Tweet not found");
+//     } else {
+//       tweet.text = req.body.text;
 
-      tweet
-        .save()
-        .then((tweet) => {
-          res.json(tweet);
-        })
-        .catch((err) => res.status(500).send(err.message));
-    }
-  });
-});
+//       tweet
+//         .save()
+//         .then((tweet) => {
+//           res.json(tweet);
+//         })
+//         .catch((err) => res.status(500).send(err.message));
+//     }
+//   });
+// });
 
-app.listen(PORT, () => {
-  console.log("Server is running on port " + PORT);
-});
+// app.listen(PORT, () => {
+//   console.log("Server is running on port " + PORT);
+// });
 
 
 //This doesn't work:
@@ -132,3 +132,21 @@ app.listen(PORT, () => {
 //This works too:
 //curl http://localhost:4000/62194786f0789e668829dca8
 //
+
+
+
+
+
+import express from "express";
+import cors from "cors";
+// import restaurants from "./api/restaurants.route.js";
+
+const app = express();
+
+app.use(cors());    // Apply our middleware, CORS module.
+app.use(express.json());    // Our server can accept JSON in the body of a request. Previously required body-parser, but express can do this now.
+
+// app.use("/api/v1/restaurants", restaurants);    // Accessed with http://localhost:5000/api/v1/restaurants
+// app.use("*", (req, res) => res.status(404).json({ error: "not found" }));    // A route that doesn't exist in our route file.
+
+export default app; // Export this file as a module.
