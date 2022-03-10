@@ -78,12 +78,12 @@ export default class TweetsDAO {
         }
     }
 
-    static async addTweet(tweetId, user, tweet, date) {
+    static async addTweet(user, tweet, date) {
         try {
-            const tweetDoc = { name: user.name,
+            const tweetDoc = { 
                 user_id: user._id,
-                date: date,
                 text: tweet,
+                date: date,
                 // tweet_id: ObjectId(tweetId),  // Converts tweet_id into an ObjectId.
             }
 
@@ -94,31 +94,31 @@ export default class TweetsDAO {
         }
     }
 
-    static async updateTweet(tweetId, userId, text, date) {
-        try {
-            const updateResponse = await tweets.updateOne(
-                { user_id: userId, _id: ObjectId(tweetId)},    // Looks for the userId and tweetId. We don't want to update unless they are the original writer.
-                { $set: { text: text, date: date } },   // Then sets the new text of the tweet and the new date.
-            )
+    // static async updateTweet(tweetId, userId, text, date) {
+    //     try {
+    //         const updateResponse = await tweets.updateOne(
+    //             { user_id: userId, _id: ObjectId(tweetId)},    // Looks for the userId and tweetId. We don't want to update unless they are the original writer.
+    //             { $set: { text: text, date: date } },   // Then sets the new text of the tweet and the new date.
+    //         )
             
-            return updateResponse
-        } catch (e) {
-            console.error(`Unable to update tweet: ${e}`);
-            return { error: e }
-        }
-    }
+    //         return updateResponse
+    //     } catch (e) {
+    //         console.error(`Unable to update tweet: ${e}`);
+    //         return { error: e }
+    //     }
+    // }
 
-    static async deleteTweet(tweetId, userId) {
-        try {
-            const deleteResponse = await tweets.deleteOne({
-                _id: ObjectId(tweetId),    // Looks for the userId and tweetId. We don't want to delete unless they are the original writer.
-                user_id: userId,
-            })
+    // static async deleteTweet(tweetId, userId) {
+    //     try {
+    //         const deleteResponse = await tweets.deleteOne({
+    //             _id: ObjectId(tweetId),    // Looks for the userId and tweetId. We don't want to delete unless they are the original writer.
+    //             user_id: userId,
+    //         })
             
-            return deleteResponse
-        } catch (e) {
-            console.error(`Unable to delete tweet: ${e}`);
-            return { error: e }
-        }
-    }
+    //         return deleteResponse
+    //     } catch (e) {
+    //         console.error(`Unable to delete tweet: ${e}`);
+    //         return { error: e }
+    //     }
+    // }
 }

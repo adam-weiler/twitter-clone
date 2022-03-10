@@ -10,8 +10,8 @@ router.route("/").get(TweetsCtrl.apiGetTweets);   // Going to root returns this 
 // router.route("/cuisines").get(RestaurantsCtrl.apiGetRestaurantCuisines);    // Get a list of all cuisines.
 
 router
-    .route("/review")
-    // .post(ReviewsCtrl.apiPostReview)    // If POST, use apiPostReview method.
+    .route("/tweet")
+    .post(TweetsCtrl.apiPostTweet)    // If POST, use apiPostTweet method.
     // .put(ReviewsCtrl.apiUpdateReview)   // If PUT, use apiUpdateReview method.
     // .delete(ReviewsCtrl.apiDeleteReview)    // If DELETE, use apiDeleteReview method.
 

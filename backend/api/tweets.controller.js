@@ -30,6 +30,36 @@ export default class TweetsController {
         res.json(response);
     }
 
+    static async apiPostTweet(req, res, next) {
+        try {   // Getting information from the body of the POST request.
+            // const tweet = req.body.text;
+            // const userInfo = {
+            //     name: req.body.name,
+            //     _id: req.body.user_id
+            // }
+
+            const tweet = "something cool";
+            const userInfo = {
+                _id: "6222945251da3668bb8e3787"
+            }
+
+            const date = new Date()
+
+            const TweetResponse = await TweetsDAO.addTweet(
+                userInfo,
+                tweet,
+                date,
+            )
+            res.json({ status: "success" }); // Tweet entered into database.
+        } catch (e) {
+            res.status(500).json({ error: e.message }); // Or returns an error.
+        }
+    }
+
+
+//user_id, date, text
+
+
     // static async apiGetRestaurantById(req, res, next) {
     //     try {
     //         let id = req.params.id || {}    // Checks for the ID parameter in the URL.
