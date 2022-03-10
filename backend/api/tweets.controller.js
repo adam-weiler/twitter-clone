@@ -32,15 +32,15 @@ export default class TweetsController {
 
     static async apiPostTweet(req, res, next) {
         try {   // Getting information from the body of the POST request.
-            // const tweet = req.body.text;
+
             // const userInfo = {
             //     name: req.body.name,
             //     _id: req.body.user_id
             // }
 
-            const tweet = "something cool";
+            const tweet = req.body.text;
             const userInfo = {
-                _id: "6222945251da3668bb8e3787"
+                _id: req.body.user_id
             }
 
             const date = new Date()
