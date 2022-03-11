@@ -37,7 +37,7 @@ function App() {
           <li className="nav-item">
             { user ? (  // If user is logged in.
               <a onClick={logout} className="nav-link" style={{cursor:'pointer'}}>
-                Logout {user.name}
+                Logout {user.name} {user.id}
               </a>
             ) : ( // Otherwise show link to log in.
               <Link to={"login"} className="nav-link">
@@ -50,7 +50,12 @@ function App() {
 
       <div className="container mt-3">
         <Switch>
-          <Route exact path={["/", "/tweets"]} component={TweetsList} />  {/* Loading the component. */}
+          <Route 
+            exact path={["/", "/tweets"]} 
+            render={(props) => (
+              <TweetsList {...props} user={user} />  // Pass in the login() to login.js.
+            )}
+          />  {/* Loading the component. */}
           <Route
             path="/login"
             render={(props) => (

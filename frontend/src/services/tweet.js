@@ -13,16 +13,16 @@ class TweetDataService {   // Functions that are going to make API calls and ret
         return http.get(`?${by}=${query}&page=${page}`);
     }
 
-    createReview(data) {
-        return http.post("/review", data);
+    createTweet(data) {
+        return http.post("/tweet", data);
     }
 
-    updateReview(data) {
-        return http.put("/review", data);
+    updateTweet(data) {
+        return http.put("/tweet", data);
     }
 
-    deleteReview(id, userId) {
-        return http.delete(`/review?id=${id}`, {data:{user_id: userId}});
+    deleteTweet(id, userId) {
+        return http.delete(`/tweet?id=${id}`, {data:{user_id: userId}});
     }
 
     getCuisines(id) {
