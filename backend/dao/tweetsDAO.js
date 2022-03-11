@@ -94,19 +94,19 @@ export default class TweetsDAO {
         }
     }
 
-    // static async updateTweet(tweetId, userId, text, date) {
-    //     try {
-    //         const updateResponse = await tweets.updateOne(
-    //             { user_id: userId, _id: ObjectId(tweetId)},    // Looks for the userId and tweetId. We don't want to update unless they are the original writer.
-    //             { $set: { text: text, date: date } },   // Then sets the new text of the tweet and the new date.
-    //         )
+    static async updateTweet(tweetId, userId, text, date) {
+        try {
+            const updateResponse = await tweets.updateOne(
+                { user_id: userId, _id: ObjectId(tweetId)},    // Looks for the userId and tweetId. We don't want to update unless they are the original writer.
+                { $set: { text: text, date: date } },   // Then sets the new text of the tweet and the new date.
+            )
             
-    //         return updateResponse
-    //     } catch (e) {
-    //         console.error(`Unable to update tweet: ${e}`);
-    //         return { error: e }
-    //     }
-    // }
+            return updateResponse
+        } catch (e) {
+            console.error(`Unable to update tweet: ${e}`);
+            return { error: e }
+        }
+    }
 
     // static async deleteTweet(tweetId, userId) {
     //     try {

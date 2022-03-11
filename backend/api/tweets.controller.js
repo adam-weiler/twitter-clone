@@ -57,6 +57,40 @@ export default class TweetsController {
     }
 
 
+    static async apiUpdateTweet(req, res, next) {
+        try {   // Getting information from the body of the POST request.
+            const tweetId = req.body.tweet_id;
+            const text = req.body.text;
+            const date = new Date();
+
+            const tweetResponse = await TweetsDAO.updateTweet(
+                tweetId,
+                req.body.user_id,
+                text,
+                date,
+              )
+
+            var { error } = tweetResponse;
+
+            if (error) {
+                res.status(400).json({ error });
+            }
+
+            if (tweetResponse.modifiedCount === 0) {
+                throw new Error(
+                    "unable to update tweet - user may not be original poster",
+                )
+            }  
+
+            res.json({ status: "success" }); // Tweet entered into database.
+        } catch (e) {
+            res.status(500).json({ error: e.message }); // Or returns an error.
+        }
+    }
+
+
+
+
 //user_id, date, text
 
 

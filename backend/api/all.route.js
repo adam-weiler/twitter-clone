@@ -10,9 +10,9 @@ router.route("/").get(TweetsCtrl.apiGetTweets);   // Going to root returns this 
 // router.route("/cuisines").get(RestaurantsCtrl.apiGetRestaurantCuisines);    // Get a list of all cuisines.
 
 router
-    .route("/tweet")
+    .route("/tweet")    // User goes to /tweet route. And then...
     .post(TweetsCtrl.apiPostTweet)    // If POST, use apiPostTweet method.
-    // .put(ReviewsCtrl.apiUpdateReview)   // If PUT, use apiUpdateReview method.
+    .put(TweetsCtrl.apiUpdateTweet)   // If PUT, use apiUpdateTweet method.
     // .delete(ReviewsCtrl.apiDeleteReview)    // If DELETE, use apiDeleteReview method.
 
 export default router;
