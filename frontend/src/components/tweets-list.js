@@ -28,42 +28,24 @@ const TweetsList = props => {
 
   return (
     <div>
-      <div className="row pb-1">
-
-
-        <div className="input-group col-lg-4">
-          
-        </div>
-
-        <div className="input-group col-lg-4">
-
-          
-        </div>
-      </div>
-
       <div className="row">
-        {/* {tweets.map((tweet) => {
-          const address = `${tweet.address.building} ${tweet.address.street}, ${tweet.address.zipcode}`;  // Concat the address into a single variable.
+        {tweets.map((tweet) => {
           return (
             <div className="col-lg-4 pb-1">
               <div className="card">
                 <div className="card-body">
-                  <h5 className="card-title">{tweet.name}</h5>
+                  <h5 className="card-title">user_id: {tweet.user_id}</h5>
                   <p className="card-text">
-                    <strong>Cuisine: </strong>e<br />
-                    <strong>Address: </strong>b
+                  <strong>text: </strong>{tweet.text}<br />
+                    <strong>date: </strong>{tweet.date}<br />
+                    <strong>_id: </strong>{tweet._id}<br />
+                    
                   </p>
-                  <div className="row">
-                    <Link to={"/tweets/"+tweet._id} className="btn btn-primary col-lg-5 mx-1 mb-1" >
-                      View Reviews
-                    </Link>
-                    <a target="_blank" href={"https://www.google.com/maps/place/" + address} className="btn btn-primary col-lg-5 mx-1 mb-1">View Map</a>
-                  </div>
                 </div>
               </div>
             </div>
           );
-        })} */}
+        })}
       </div>
     </div>
   );
