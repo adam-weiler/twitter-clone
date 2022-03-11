@@ -13,6 +13,6 @@ router
     .route("/tweet")    // User goes to /tweet route. And then...
     .post(TweetsCtrl.apiPostTweet)    // If POST, use apiPostTweet method.
     .put(TweetsCtrl.apiUpdateTweet)   // If PUT, use apiUpdateTweet method.
-    // .delete(ReviewsCtrl.apiDeleteReview)    // If DELETE, use apiDeleteReview method.
+    .delete(TweetsCtrl.apiDeleteTweet)    // If DELETE, use apiDeleteTweet method.
 
 export default router;

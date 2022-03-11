@@ -108,17 +108,24 @@ export default class TweetsDAO {
         }
     }
 
-    // static async deleteTweet(tweetId, userId) {
-    //     try {
-    //         const deleteResponse = await tweets.deleteOne({
-    //             _id: ObjectId(tweetId),    // Looks for the userId and tweetId. We don't want to delete unless they are the original writer.
-    //             user_id: userId,
-    //         })
+    static async deleteTweet(tweetId, userId) {
+        try {
+            const deleteResponse = await tweets.deleteOne({
+                _id: ObjectId(tweetId),    // Looks for the userId and tweetId. We don't want to delete unless they are the original writer.
+                user_id: userId,
+            })
+
+            // if (deleteResponse.deletedCount != 1) {
+            //     throw "`Unable to delete tweet";
+            // } else {
+            //     return deleteResponse
+            // }
+            return deleteResponse;
             
-    //         return deleteResponse
-    //     } catch (e) {
-    //         console.error(`Unable to delete tweet: ${e}`);
-    //         return { error: e }
-    //     }
-    // }
+            
+        } catch (e) {
+            console.error(`Unable to delete tweet: ${e}`);
+            return { error: e }
+        }
+    }
 }

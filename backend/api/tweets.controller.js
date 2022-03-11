@@ -88,6 +88,31 @@ export default class TweetsController {
         }
     }
 
+    static async apiDeleteTweet(req, res, next) {
+        try {   // Getting information from the URL request and the body of the POST request.
+            const tweetId = req.query.id;
+            const userId = req.body.user_id;    // This is not good practice. Normally shouldn't have anything in the body in the DELETE request.
+            // console.error(tweetId);
+            // console.error(userId);
+
+            const tweetResponse = await TweetsDAO.deleteTweet(
+                tweetId,
+                userId,
+            )
+            // console.log(tweetResponse)
+
+            if (tweetResponse.deletedCount != 1) {  // If nothing was deleted, either the tweetId or userID is not correct.
+                res.json({ status: "unable to delete tweet - user may not be original poster" }); // Tweet was not deleted from database.
+            } else {
+                res.json({ status: "success" }); // Tweet deleted from database.
+            }
+
+            
+        } catch (e) {
+            res.status(500).json({ error: e.message }); // Or returns an error.
+        }
+    }
+
 
 
 
