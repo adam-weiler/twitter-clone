@@ -41,7 +41,7 @@ JSON:
 {
 	"tweet_id": "622a7b63d82b89a379a0f84e",
 	"user_id": "622a81b2fd0ca9ae354b32f4",
-    "text": "This is the new tweet!"
+	"text": "This is the new tweet!"
 }
 ```
 ** It is not good practice to have the user_id in the body of the text instead of proper authentication.*
