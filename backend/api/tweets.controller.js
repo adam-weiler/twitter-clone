@@ -2,7 +2,7 @@ import TweetsDAO from "../dao/tweetsDAO.js";
 
 export default class TweetsController {
     static async apiGetTweets (req, res, next) {   // User may or may not be passing variables in with the URL.
-        const tweetsPerPage = req.query.resturantsPerPage ? parseInt(req.query.tweetsPerPage, 10) : 20  // Checks if tweetsPerPage is being passed in and then converts to an int. Otherwise default is 20 tweets per page.
+        const tweetsPerPage = req.query.tweetsPerPage ? parseInt(req.query.tweetsPerPage, 10) : 20  // Checks if tweetsPerPage is being passed in and then converts to an int. Otherwise default is 20 tweets per page.
         const page = req.query.page ? parseInt(req.query.page, 10) : 0  // Checks if page is being passed in and then converts to an int. Otherwise default is page 0.
 
         let filters = {};   // Filters is set to default.
