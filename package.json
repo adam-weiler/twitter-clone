@@ -1,4 +1,9 @@
 {
+  "scripts": {
+    "start": "node frontend/src/index.js",
+    "build": "webpack"
+  },
+  "heroku-run-build-script": true,
   "dependencies": {
     "bootstrap": "^5.1.3"
   }
