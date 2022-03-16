@@ -6,7 +6,7 @@ class TweetDataService {   // Functions that are going to make API calls and ret
     }
 
     get(id) {
-        return http.get(`/id/${id}`);
+        return http.get(`/status/${id}`);
     }
 
     find(query, by = "name", page = 0) {   // query is userInput. by is either "name", "zipcode", or "cuisine".

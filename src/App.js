@@ -3,7 +3,8 @@ import React from "react";
 import { Switch, Route, Link } from "react-router-dom"; // Using different routes to connect to different react routes.
 import "bootstrap/dist/css/bootstrap.min.css";  // Bootstrap.
 
-// import AddReview from "./components/add-review";
+import AddTweet from "./components/add-tweet";
+import BrandnewTweet from "./components/brand-new-tweet";
 // import Tweet from "./components/tweets";
 import TweetsList from "./components/tweets-list";
 import Login from "./components/login";
@@ -21,6 +22,11 @@ function App() {
   async function logout() {
     setUser(null);  // Call the React Hook and set the user to null.
   }
+
+  // function TweetForm(...props) {
+  //   // return <h1>Hello {props}</h1>
+  //   return <AddTweet />
+  // }
 
   return (
     <div>
@@ -49,13 +55,42 @@ function App() {
       </nav>
 
       <div className="container mt-3">
+
+
+
+        {/* <AddTweet user={user} /> */}
+        {/* <TweetForm/> */}
+
+        { user ? (  // If user is logged in.
+              <span>They can tweet
+                {/* <AddTweet {...props} user={user} /> */}
+                {/* <AddTweet user={user} editing="false" initialTweetState="" /> */}
+
+                <BrandnewTweet user={user} />
+              </span>
+            ) : ( // Otherwise show link to log in.
+            <span>No tweeting</span>
+            )}
+
+
+
         <Switch>
           <Route 
             exact path={["/", "/tweets"]} 
             render={(props) => (
-              <TweetsList {...props} user={user} />  // Pass in the login() to login.js.
+              <TweetsList {...props} user={user} />  // Pass in the user variable to login.js.
             )}
           />  {/* Loading the component. */}
+
+
+          <Route 
+            path="/tweets"
+            render={(props) => (
+              <AddTweet {...props} user={user} />
+            )}
+          />
+
+
           <Route
             path="/login"
             render={(props) => (

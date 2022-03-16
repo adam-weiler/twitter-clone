@@ -3,8 +3,8 @@ import React, { useState } from "react";
 const Login = props => {  // This is not a fully-functional authentication system. This is a dummy login system to show how the tweets section of the project works.
 
   const initialUserState = {
-    name: "",
-    id: "",
+    name: "1234",
+    id: "1234",
   };
 
   const [user, setUser] = useState(initialUserState);

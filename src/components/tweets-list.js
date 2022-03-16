@@ -9,9 +9,9 @@ const TweetsList = props => {
     name: "",
     address: {},
     cuisine: "",
-    reviews: []
+    tweets: []
   }
-  const [tweet, setTweet] = useState(initialTweetState); // By default all these fields are empty.
+  // const [tweet, setTweet] = useState(initialTweetState); // By default all these fields are empty.
 
 
 
@@ -40,7 +40,7 @@ const TweetsList = props => {
   const deleteTweet = (tweetId, index) => {
     TweetDataService.deleteTweet(tweetId, props.user.id)
       .then(response => {
-        setTweet((prevState) => {
+        setTweets((prevState) => {
           prevState.tweets.splice(index, 1)  // If you delete a tweet, it removes it from the state and from the page.
           return({
             ...prevState
@@ -68,16 +68,21 @@ const TweetsList = props => {
                     <strong>date: </strong>{tweet.date}<br />
                     <strong>_id: </strong>{tweet._id}<br />
                     {props.user && props.user.id === tweet.user_id &&  // Checks if user is logged in, and if user's id is the same as the tweet's id. The last && isn't a mistake but saying to use the following code.
-                      <div className="row">
+                      <span className="row">
                         <Link to={{
                           pathname: "/tweets/" + tweet._id,
                           state: {
                             currentTweet: tweet
                           }
                         }} className="btn btn-primary col-lg-5 mx-1 mb-1">Edit</Link>
+
+
+
+                        
                         <a onClick={() => deleteTweet(tweet._id, index)} className="btn btn-primary col-lg-5 mx-1 mb-1">Delete</a>
-                      </div>
+                      </span>
                     }
+                    <strong>Link to Tweet:</strong> <Link to={"/status/"+tweet._id} className="btn btn-primary col-lg-5 mx-1 mb-1">View</Link>
                   </p>
                 </div>
               </div>
