@@ -6,12 +6,12 @@ class TweetDataService {   // Functions that are going to make API calls and ret
     }
 
     get(id) {
-        return http.get(`/status/${id}`);
-    }
+        return http.get(`/id/${id}`);
+      }
 
-    find(query, by = "name", page = 0) {   // query is userInput. by is either "name", "zipcode", or "cuisine".
-        return http.get(`?${by}=${query}&page=${page}`);
-    }
+    // find(query, by = "name", page = 0) {   // query is userInput. by is either "name", "zipcode", or "cuisine".
+        // return http.get(`?${by}=${query}&page=${page}`);
+    // }
 
     createTweet(data) {
         return http.post("/tweet", data);
@@ -25,9 +25,9 @@ class TweetDataService {   // Functions that are going to make API calls and ret
         return http.delete(`/tweet?id=${id}`, {data:{user_id: userId}});
     }
 
-    getCuisines(id) {
-        return http.get(`/cuisines`);
-    }
+    // getCuisines(id) {
+        // return http.get(`/cuisines`);
+    // }
 
 }
 

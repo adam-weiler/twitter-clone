@@ -7,6 +7,7 @@ import AddTweet from "./components/add-tweet";
 import BrandnewTweet from "./components/brand-new-tweet";
 // import Tweet from "./components/tweets";
 import TweetsList from "./components/tweets-list";
+import TweetStatus from "./components/tweet-status";
 import Login from "./components/login";
 
 function App() {
@@ -75,18 +76,29 @@ function App() {
 
 
         <Switch>
+          {/* This is the main route to homepage. */}
           <Route 
             exact path={["/", "/tweets"]} 
             render={(props) => (
               <TweetsList {...props} user={user} />  // Pass in the user variable to login.js.
             )}
-          />  {/* Loading the component. */}
+          />
 
 
+          {/* This is the route for editing tweets. */}
           <Route 
-            path="/tweets"
+            path={["/edit"]} 
             render={(props) => (
               <AddTweet {...props} user={user} />
+            )}
+           />
+
+          {/* This is the route to look at a tweet. */}
+          <Route 
+            path={["/status/:id"]} 
+            render={(props) => (
+              // <AddTweet {...props} user={user} />
+              <TweetStatus {...props} user={user} />
             )}
           />
 
