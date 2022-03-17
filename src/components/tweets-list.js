@@ -25,13 +25,33 @@ const TweetsList = props => {
   const retrieveTweets = () => {
     TweetDataService.getAll() // Retrieve all the tweet data.
       .then(response => {
-        console.log(response.data);
-        setTweets(response.data.tweets);  // This goes into the tweets' state.
+        // console.log(response.data);
+
+
+        // let sortedData = sortData(response.data.tweets);
+        // let sortedData = response.data.tweets.sort ((a, b) => a.Date.localeCompare(b.Date));
+       
+
+
+        // let sortedData = response.data.tweets;
+        // sortedData = sortedData.sort((a, b) => b.date > a.date ? 1 : -1);   // Reorders the json to put the newest ones at the top of the list.
+
+        let sortedData = sortData(response.data.tweets);   // Reorders the json to put the newest ones at the top of the list.
+        
+
+
+        // setTweets(response.data.tweets);  // This goes into the tweets' state.
+        setTweets(sortedData);  // This goes into the tweets' state.
       })
       .catch(e => {
         console.log(e);
       });
   };
+
+  const sortData = (data) => {
+    // data = data.sort
+    return data.sort((a, b) => b.date > a.date ? 1 : -1);
+  }
 
    const refreshList = () => {
     retrieveTweets();
@@ -58,6 +78,7 @@ const TweetsList = props => {
         //     ...prevState
         //   })
         // })
+        refreshList();
       })
       .catch(e => {
         console.log(e);
@@ -74,9 +95,14 @@ const TweetsList = props => {
       <div className="row">
         {/* Are you logged in: {props.user.id} */}
 
+
+
+        
+
+
         {tweets.map((tweet, index) => {
 
-
+          // console.log(tweets)
 
           return (
             <div className="col-lg-4 pb-1" key={index}>

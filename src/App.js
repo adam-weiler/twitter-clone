@@ -1,5 +1,4 @@
 import React from "react";
-// import { Switch, Route, Link } from "react-router-dom"; // Using different routes to connect to different react routes.
 import { Switch, Route, Link } from "react-router-dom"; // Using different routes to connect to different react routes.
 import "bootstrap/dist/css/bootstrap.min.css";  // Bootstrap.
 
@@ -47,7 +46,7 @@ function App() {
                 Logout {user.name} {user.id}
               </a>
             ) : ( // Otherwise show link to log in.
-              <Link to={"login"} className="nav-link">
+              <Link to={"/login"} className="nav-link">
                 Login
               </Link>
             )}

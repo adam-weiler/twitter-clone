@@ -45,57 +45,21 @@ const TweetStatus = props => {
 
   return (
     <div>
-      {tweet ? (
+      {tweet._id ? (
         <div>
-          <h5>Name{tweet.name}</h5>
-          <h5>ID {tweet.id}</h5>
-          <h5>user_id: {tweet.user_id}</h5>
-          {/* <h4>{props}</h4> */}
-          <p>
-            {/* <strong>Cuisine: </strong>{tweet.cuisine}<br/> */}
-            {/* <strong>Address: </strong>{tweet.address.building} {tweet.address.street}, {tweet.address.zipcode} */}
-          </p>
-          {/* <Link to={"/tweets/" + props.match.params.id + "/review"} className="btn btn-primary"> */}
-            {/* Add Tweet */}
-          {/* </Link> */}
-          <h4> Tweets </h4>
-          <div className="row">
-              Hello
-            {/* {tweet.tweets.length > 0 ? (
-             tweet.tweets.map((review, index) => {
-               return (
-                 <div className="col-lg-4 pb-1" key={index}>
-                   <div className="card">
-                     <div className="card-body">
-                       <p className="card-text">
-                         {review.text}<br/>
-                         <strong>User: </strong>{review.name}<br/>
-                         <strong>Date: </strong>{review.date}
-                       </p>
-                       {props.user && props.user.id === review.user_id &&
-                          <div className="row">
-                            <a onClick={() => deleteTweet(review._id, index)} className="btn btn-primary col-lg-5 mx-1 mb-1">Delete</a>
-                            <Link to={{
-                              pathname: "/tweets/" + props.match.params.id + "/review",
-                              state: {
-                                currentTweet: review
-                              }
-                            }} className="btn btn-primary col-lg-5 mx-1 mb-1">Edit</Link>
-                          </div>                   
-                       }
-                     </div>
-                   </div>
-                 </div>
-               );
-             }) */}
-            ) : (
-            <div className="col-sm-4">
-              <p>404: This tweet does not exist.</p>
+          <div className="col-lg-4 pb-1">
+                <div className="card">
+                    <div className="card-body">
+                        <p className="card-text">
+                            <strong>user_id: </strong>{tweet.user_id}<br/>
+                            <strong>text: </strong>{tweet.text}<br/>
+                            {/* <strong>date: </strong>{formatDate(tweet.date)}<br/> */}
+                            <strong>date: </strong>{tweet.date}<br/>
+                            <strong>id: </strong>{tweet._id}<br/>
+                        </p>
+                    </div>
+                </div>
             </div>
-            )}
-
-          </div>
-
         </div>
       ) : (
         <div>
