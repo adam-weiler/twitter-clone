@@ -32,7 +32,7 @@ const AddTweet = props => {
       TweetDataService.updateTweet(data)
         .then(response => {
           setSubmitted(true);
-          console.log("EDITING " + response.data);
+          // console.log("EDITING " + response.data);
         })
         .catch(e => {
           console.log(e);
@@ -41,7 +41,7 @@ const AddTweet = props => {
       TweetDataService.createTweet(data)
         .then(response => {
           setSubmitted(true);
-          console.log("NOT EDITING" + response.data);
+          console.log("NOT EDITING, creating new" + response.data);
         })
         .catch(e => {
           console.log(e);
@@ -56,9 +56,9 @@ const AddTweet = props => {
         {submitted ? (
           <div>
             <h4>You posted successfully!</h4>
-            {/* <Link to={"/tweets/" + props.match.params.id} className="btn btn-success">
+            <Link to={"/status/" + props.location.state.currentTweet._id} className="btn btn-success">
               Back to Tweet
-            </Link> */}
+            </Link>
           </div>
         ) : (
           <div>

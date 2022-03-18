@@ -13,11 +13,11 @@ const TweetStatus = props => {
   const [tweet, setTweet] = useState(initialTweetState);
 
   const getTweet = id => {
-      console.log('id ' + id)
+      // console.log('id ' + id)
     TweetDataService.get(id)
       .then(response => {
         setTweet(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch(e => {
         console.log(e);

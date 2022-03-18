@@ -61,6 +61,7 @@ const AddTweet = props => {
                 value={tweet}
                 onChange={handleInputChange}
                 name="text"
+                placeholder="What's happening?" 
               />
             </div>
             <button onClick={saveTweet} className="btn btn-success">
